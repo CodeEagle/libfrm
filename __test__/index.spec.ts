@@ -1,8 +1,9 @@
-// import test from 'ava'
+import test from 'ava'
 
-// import { plus100 } from '../index'
+import { projectsOf } from '../index'
 
-// test('sync function from native code', (t) => {
-//   const fixture = 42
-//   t.is(plus100(fixture), fixture + 100)
-// })
+test('test', (t) => {
+  const dir = process.cwd()
+  const list = projectsOf(dir)
+  t.is(list.length, 0)
+})
