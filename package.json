@@ -1,6 +1,6 @@
 {
   "name": "@cybermega/libfrm",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lib for Flutter Resources Manager",
   "main": "index.js",
   "repository": "https://github.com/CodeEagle/libfrm.git",
