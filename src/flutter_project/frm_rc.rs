@@ -1,15 +1,15 @@
+use std::{cmp::min, collections::HashSet};
+
 use serde::{Deserialize, Serialize};
-use serde_yaml::Mapping;
-use std::{cmp::min, collections::HashSet, vec};
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct ConfigInfo {
-  pub core_version: String,
-  pub dartfmt_line_length: u64,
+pub struct FrmRC {
   pub assets: Vec<String>,
+  pub enable: bool,
 }
+
 /// Instance
-impl ConfigInfo {
+impl FrmRC {
   fn gcd_of_string(str1: &String, str2: &String) -> String {
     let str1_paths = str1.split("/");
     let str2_paths = str2.split("/");
@@ -73,29 +73,5 @@ impl ConfigInfo {
       }
       return set;
     }
-  }
-}
-// Static
-impl ConfigInfo {
-  pub fn from(map: Option<&Mapping>) -> Option<ConfigInfo> {
-    if let Some(value) = map {
-      let c = value["core_version"].as_str();
-      let d = value["dartfmt_line_length"].as_u64();
-      let e = value["assets"].as_sequence();
-      if let (Some(core_version), Some(dartfmt_line_length), Some(assets)) = (c, d, e) {
-        let mut list: Vec<String> = vec![];
-        for ele in assets {
-          if let Some(str) = ele.as_str() {
-            list.push(str.to_string());
-          }
-        }
-        return Some(ConfigInfo {
-          core_version: core_version.to_string(),
-          dartfmt_line_length,
-          assets: list,
-        });
-      }
-    }
-    return None;
   }
 }

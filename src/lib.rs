@@ -4,7 +4,6 @@
 extern crate napi_derive;
 
 pub mod flutter_project;
-pub mod utils;
 use flutter_project::flutter_project::FlutterProject;
 use std::sync::{Arc, Mutex};
 
